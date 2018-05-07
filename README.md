@@ -115,8 +115,29 @@ food_info.sort_values("Norm_Nutr_Index", inplace=True, ascending=False)>>>
 is_null = pandas.isnull(dataframe)
 
 ### Populate empty values with mean 
+
+Type1
 age_is_null = pd.isnull(titanic_survival["age"])
 good_ages=titanic_survival["age"][age_is_null == False]
 correct_mean_age = sum(good_ages)/len(good_ages)
 
+Type2
+correct_mean_age = titanic_survival["age"].mean() >>> automatically excludes missing values when calculating mean 
+
+### Calculating Fare Mean for Each Passenger Class
+
+Type1:
+passenger_classes = [1, 2, 3]
+fares_by_class = {}
+for psngcl in passenger_classes:
+    pclass_rows = titanic_survival[titanic_survival["pclass"] == psngcl]
+    pclass_fares=pclass_rows["fare"]
+    fare_for_class=pclass_fares.mean()
+    fares_by_class[psngcl] = fare_for_class
+    
+Type2:
+passenger_age=titanic_survival.pivot_table(index="pclass", values="age",aggfunc=np.mean), 
+where index>>> column to group by 
+      values>>> value column to perfrom operation
+      aggfunc>>> what operation to perform on values 
 
