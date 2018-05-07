@@ -10,6 +10,8 @@ example_dictionary[item]=example_value
 ### Imports modelue
 import math (as m) >>> math.sqrt(10)
 import csv >>> cvs.reader(data)
+import numpy
+import pandas
 
 # Working with Classes
 class Dataset:
@@ -82,3 +84,11 @@ race_per_hundredk = {}
 for k,v in homicide_race_counts.items():
     race_per_hundredk[k] = (v / mapping[k]) * 100000   >>> 
 >>> Creates Dictionary where one dic values are devided by other dic values. 
+
+# Pandas
+food_info = pandas.read_csv("food_info.csv") >>> Reads in file 
+data.head(n) >>> first n rows
+data.columns >>> column names 
+data.shape >>> structure of data frame; [0] - rows , [1] - columns 
+data.loc[1] >>> extracting rows 
+data = data[column_name] >>> extracting columns 
