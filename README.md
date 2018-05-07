@@ -111,4 +111,12 @@ food_info["name"]=dataframe
 food_info.sort_values("Norm_Nutr_Index", inplace=True, ascending=False)>>>
 >>> inplace >>> means that we sort in the same Dataframe. 
 
+### Is null
+is_null = pandas.isnull(dataframe)
+
+### Populate empty values with mean 
+age_is_null = pd.isnull(titanic_survival["age"])
+good_ages=titanic_survival["age"][age_is_null == False]
+correct_mean_age = sum(good_ages)/len(good_ages)
+
 
