@@ -92,3 +92,16 @@ data.columns >>> column names
 data.shape >>> structure of data frame; [0] - rows , [1] - columns 
 data.loc[1] >>> extracting rows 
 data = data[column_name] >>> extracting columns 
+
+### Normalizing values
+food_info >>> Dataframe
+normalized_protein=
+(food_info["Protein_(g)"] - food_info["Protein_(g)"].min())/
+(food_info["Protein_(g)"].max() - food_info["Protein_(g)"].min())
+x(normalized)=(x-x(min))/(x(max)-x(min))
+
+### Adding new column
+food_info["Normalized_Protein"]=normalized_protein, where
+normalized_protein >>> dataframe column filled with values 
+
+
