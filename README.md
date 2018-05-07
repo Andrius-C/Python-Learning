@@ -104,4 +104,11 @@ x(normalized)=(x-x(min))/(x(max)-x(min))
 food_info["Normalized_Protein"]=normalized_protein, where
 normalized_protein >>> dataframe column filled with values 
 
+### Adding New Column
+food_info["name"]=dataframe
+
+### Sorting Values 
+food_info.sort_values("Norm_Nutr_Index", inplace=True, ascending=False)>>>
+>>> inplace >>> means that we sort in the same Dataframe. 
+
 
