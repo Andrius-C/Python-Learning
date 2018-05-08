@@ -170,3 +170,30 @@ def count_totals(dataframe):
 aa_cat_counts = count_totals(all_ages)
 rg_cat_counts = count_totals(recent_grads)
 
+### Count Wages according to Major in two different sets 
+
+All majors, common to both DataFrames
+majors = recent_grads['Major'].unique()
+rg_lower_count = 0
+
+for major in majors: 
+    recent_grads_row=recent_grads[recent_grads["Major"] == major]
+    all_ages_row=all_ages[all_ages["Major"] == major]
+    
+    rg_unemp_rate=recent_grads_row.iloc[0]["Unemployment_rate"]
+    aa_unemp_rate=all_ages_row.iloc[0]["Unemployment_rate"]
+    if rg_unemp_rate < aa_unemp_rate:
+        rg_lower_count = rg_lower_count+1
+        
+print(rg_lower_count)
+
+### Creating series 
+Type1 : 
+film_names = series_film.values
+rt_scores = series_rt.values
+
+series_custom = Series(rt_scores, index=film_names)
+print(series_custom)
+
+Type2: 
+movies=fandango[["FILM","RottenTomatoes"]], where fandango is dataframe
