@@ -197,3 +197,26 @@ print(series_custom)
 
 Type2: 
 movies=fandango[["FILM","RottenTomatoes"]], where fandango is dataframe
+
+### Sorting indexes and values in series object
+sc2=series_custom.sort_index()
+sc3=series_custom.sort_values()
+
+
+# Working with Dataframes
+
+### creating new sub-dataframe based on some index 
+fandango_films = fandango.set_index("FILM", drop=False, inplace=False)
+
+### Using apply and lambda function to calculate across rows(0) or columns(1)
+
+Rows:
+import numpy as np
+types = fandango_films.dtypes
+float_columns = types[types.values == 'float64'].index
+float_df = fandango_films[float_columns]
+deviations = float_df.apply(lambda x: np.std(x))
+
+Columns:
+rt_mt_user = float_df[['RT_user_norm', 'Metacritic_user_nom']]
+rt_mt_means = rt_mt_user.apply(lambda x: np.mean(x), axis=1)
