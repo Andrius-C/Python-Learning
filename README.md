@@ -90,7 +90,8 @@ food_info = pandas.read_csv("food_info.csv") >>> Reads in file
 data.head(n) >>> first n rows
 data.columns >>> column names 
 data.shape >>> structure of data frame; [0] - rows , [1] - columns 
-data.loc[1] >>> extracting rows 
+data.loc[1] >>> extracting rows by index, counting from 1 
+data.iloc[1] >>> extracting rows by position, counting from 0 
 data = data[column_name] >>> extracting columns 
 
 ### Normalizing values
@@ -140,4 +141,32 @@ passenger_age=titanic_survival.pivot_table(index="pclass", values="age",aggfunc=
 where index>>> column to group by 
       values>>> value column to perfrom operation
       aggfunc>>> what operation to perform on values 
+      
+### Dropping rows or columns from matrix
+new_titanic_survival = titanic_survival.dropna(axis=0, subset=["age","sex"]), where axis = 0 >> row , axis = 1 >>> column
+
+### Selecting particular rows/columns
+row_index_1100_age =new_titanic_survival.loc[1100,"age"]
+row_index_25_survived= new_titanic_survival.loc[25,"survived"]
+five_rows_three_cols= new_titanic_survival.iloc[:5,:3]  >>> first 5 rows, first 3 columns. 
+
+### Reindexing Dataframe after sorting 
+titanic_reindexed = new_titanic_survival.reset_index(drop=True)
+
+### Finding total jobs for each unique major 
+aa_cat_counts = dict()
+rg_cat_counts = dict()
+
+def count_totals(dataframe):
+    categories=dataframe["Major_category"].unique()
+    counts_dictionary=dict()
+    
+    for category in categories:
+        data_major = dataframe[dataframe["Major_category"] == category]
+        total = data_major["Total"].sum()
+        counts_dictionary[category] = total 
+    return counts_dictionary
+
+aa_cat_counts = count_totals(all_ages)
+rg_cat_counts = count_totals(recent_grads)
 
