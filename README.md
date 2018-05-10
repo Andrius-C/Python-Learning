@@ -220,3 +220,5 @@ deviations = float_df.apply(lambda x: np.std(x))
 Columns:
 rt_mt_user = float_df[['RT_user_norm', 'Metacritic_user_nom']]
 rt_mt_means = rt_mt_user.apply(lambda x: np.mean(x), axis=1)
+
+### Values counts function.  pd.data.value_counts 
