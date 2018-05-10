@@ -222,3 +222,27 @@ rt_mt_user = float_df[['RT_user_norm', 'Metacritic_user_nom']]
 rt_mt_means = rt_mt_user.apply(lambda x: np.mean(x), axis=1)
 
 ### Values counts function.  pd.data.value_counts 
+
+# Data Cleaning 
+### Reading multiple files into a dictionary
+
+import pandas as pd
+data_files = [
+    "ap_2010.csv",
+    "class_size.csv",
+    "demographics.csv",
+    "graduation.csv",
+    "hs_directory.csv",
+    "sat_results.csv"
+]
+data = {}
+for f in data_files:
+    d=pd.read_csv("schools/{0}".format(f))
+    key_name=f.replace(".csv", "")
+    data[key_name]=d
+    
+### Combining two dataframes
+survey=pd.concat([all_survey, d75_survey], axis=0), where axis=0 >>> putting one frame  below the other
+
+### Copying columns
+data[new_column]=data[old_column]
