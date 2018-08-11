@@ -116,3 +116,14 @@ max_value = None
 for i in values:
     if max_value is None or i > max_value:
         max_value = i
+        
+# List comprehension and .items()
+
+top_female_names=[]
+for key in name_counts:
+    if name_counts[key] == 2:
+        top_female_names.append(key)
+        
+        
+top_female_names = []
+top_female_names = [k for k, v in name_counts.items() if v == 2]
