@@ -77,9 +77,10 @@ class Dataset:
         return count
 
 nfl_dataset = Dataset(nfl_data)
-# Solution code
 
 
+
+# Using Try exception to convert years to integers
 
 for row in legislators:
     
@@ -92,3 +93,26 @@ for row in legislators:
         
         row.append(birth_year)
     
+
+# Populating empty strings with last value
+
+last_value=1
+for row in legislators:
+    if row[7]==0:
+        row[7]=last_value
+    last_value=row[7]
+
+# List Comprehensions 
+
+apple_prices = [100, 101, 102, 105]
+apple_prices_doubled=[price*2 for price in apple_prices]
+apple_prices_lowered = [price-100 for price in apple_prices]
+
+
+# Checking for max value 
+
+values = [-50, -80, -100]
+max_value = None
+for i in values:
+    if max_value is None or i > max_value:
+        max_value = i
