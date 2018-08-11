@@ -78,3 +78,17 @@ class Dataset:
 
 nfl_dataset = Dataset(nfl_data)
 # Solution code
+
+
+
+for row in legislators:
+    
+        year=row[2]
+        birth_year=year.split("-")[0]
+        try:
+            birth_year=int(birth_year)
+        except Exception:
+            birth_year=0
+        
+        row.append(birth_year)
+    
